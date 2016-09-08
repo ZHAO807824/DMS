@@ -12,6 +12,6 @@
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="com/dms/dao/user/StudentDao.xml"/>
+		<mapper resource="com/dms/dao/AdminDao.xml"/>
 	</mappers>
 </configuration>

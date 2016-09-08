@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.dms.entity.user.Student;
 
 /**
- * 学生信息
  * 
  * @author zhao
  *
@@ -16,9 +15,9 @@ import com.dms.entity.user.Student;
 public interface IStudentDao {
 
 	/**
-	 * 遍历学生列表
 	 * 
 	 * @return
 	 */
 	public List<Student> query();
+	
 }

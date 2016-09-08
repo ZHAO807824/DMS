@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="${ctx}/cloud/css/animatecss/animate.min.css" />
 	<!-- FONTS -->
 	<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
 </head>
 <body class="login">	
 	<!-- PAGE -->
@@ -45,16 +46,16 @@
 							<div class="login-box">
 								<h2 class="bigintro">Sign In</h2>
 								<div class="divide-40"></div>
-								<form role="form">
+								<form role="form" id="form" name="form" action="login.action" method="post">
 								  <div class="form-group">
-									<label for="exampleInputEmail1">Email address</label>
+									<label for="email">Email address</label>
 									<i class="fa fa-envelope"></i>
-									<input type="email" class="form-control" id="exampleInputEmail1" >
+									<input type="email" class="form-control" id="email" name="email" >
 								  </div>
 								  <div class="form-group"> 
-									<label for="exampleInputPassword1">Password</label>
+									<label for="password">Password</label>
 									<i class="fa fa-lock"></i>
-									<input type="password" class="form-control" id="exampleInputPassword1" >
+									<input type="password" class="form-control" id="password" name="password" >
 								  </div>
 								  <div>
 									<label class="checkbox"> <input type="checkbox" class="uniform" value=""> Remember me</label>
@@ -189,6 +190,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- JQUERY -->
 	<script src="${ctx}/cloud/js/jquery/jquery-2.0.3.min.js"></script>
+	<script src="${ctx}/cloud/js/jquery.validate.min.js"></script>
 	<!-- JQUERY UI-->
 	<script src="${ctx}/cloud/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
 	<!-- BOOTSTRAP -->
@@ -214,5 +216,8 @@
 		}
 	</script>
 	<!-- /JAVASCRIPTS -->
+	
+	<!-- 自定义 -->
+	<script src="${ctx}/cloud/custom/login.js"></script>
 </body>
 </html>

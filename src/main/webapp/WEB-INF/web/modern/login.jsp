@@ -17,6 +17,7 @@
 <link href="${ctx}/modern/css/font-awesome.css" rel="stylesheet">
 <!-- jQuery -->
 <script src="${ctx}/modern/js/jquery.min.js"></script>
+<script src="${ctx}/modern/js/jquery.validate.min.js"></script>
 <!----webfonts--->
 <link
 	href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900'
@@ -24,6 +25,9 @@
 <!---//webfonts--->
 <!-- Bootstrap Core JavaScript -->
 <script src="${ctx}/modern/js/bootstrap.min.js"></script>
+
+<!-- 自定义 -->
+<script src="${ctx}/modern/custom/login.js"></script>
 </head>
 <body id="login">
 	<div class="login-logo">
@@ -31,14 +35,13 @@
 	</div>
 	<h2 class="form-heading">login</h2>
 	<div class="app-cam">
-		<form>
-			<input type="text" class="text" value="E-mail address"
+		<form id="form" name="form" action="login.action" method="post">
+			<input type="text" class="text" id="email" name="email" value="E-mail address"
 				onfocus="this.value = '';"
 				onblur="if (this.value == '') {this.value = 'E-mail address';}">
-			<input type="password" value="Password" onfocus="this.value = '';"
-				onblur="if (this.value == '') {this.value = 'Password';}">
+			<input type="password" value="Password" id="password" name="password" onfocus="this.value = '';">
 			<div class="submit">
-				<input type="submit" onclick="myFunction()" value="Login">
+				<input type="submit"  value="Login">
 			</div>
 			<div class="login-social-link">
 				<a href="index.html" class="facebook"> Facebook </a> <a
@@ -58,7 +61,7 @@
 	<div class="copy_layout login">
 		<p>
 			Copyright &copy; 2016.Company name All rights reserved.
-			<a href="https://github.com/ZHAO807824" target="_blank" title="模板之家">ZHAO807824</a>
+			<a href="https://github.com/ZHAO807824" target="_blank" title="ZHAO807824">ZHAO807824</a>
 		</p>
 	</div>
 </body>

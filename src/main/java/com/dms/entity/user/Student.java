@@ -5,7 +5,7 @@ import java.util.Date;
 import com.dms.entity.IdEntity;
 
 /**
- * 学生信息
+ * 瀛︾敓淇℃伅
  * 
  * @author zhao
  *

@@ -1,24 +1,24 @@
-package com.dms.entity.user;
+package com.dms.entity;
 
 import com.dms.entity.IdEntity;
 
 /**
- * 登录用户:宿舍管理员,学生
+ * 鐢ㄦ埛
  * 
  * @author zhao
  *
  */
 public class Admin extends IdEntity {
-	private String username;
+	private String email;
 	private String password;
 	private Integer role;
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -39,7 +39,7 @@ public class Admin extends IdEntity {
 
 	@Override
 	public String toString() {
-		return "Admin [username=" + username + ", password=" + password + ", role=" + role + "]";
+		return "Admin [email=" + email + ", password=" + password + ", role=" + role + "]";
 	}
 
 }

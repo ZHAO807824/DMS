@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Í¨ÓÃÊµÌåÀà
+ * é€šç”¨å®ä½“ç±»
  * 
  * @author zhao
  *
@@ -21,12 +21,6 @@ public abstract class IdEntity {
 		this.id = id;
 	}
 
-	/**
-	 * Map<ID,Entity>¹¤¾ß·½·¨
-	 * 
-	 * @param list
-	 * @return
-	 */
 	public static <T extends IdEntity> Map<Integer, T> idEntityMap(Collection<T> list) {
 		Map<Integer, T> map = new HashMap<Integer, T>();
 		if (null == list || 0 == list.size()) {

@@ -4,15 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ÈÕÆÚÊ±¼ä´¦Àí
- * 
+ * æ—¥æœŸæ—¶é—´å·¥å…·ç±»
  * @author zhao
  *
  */
 public class DateUtil {
 
 	/**
-	 * ¸ù¾İ´«ÈëµÄDateºÍformat»ñÈ¡ÈÕÆÚÊ±¼ä×Ö·û´®
 	 * 
 	 * @param date
 	 * @param format
@@ -27,8 +25,8 @@ public class DateUtil {
 		return result;
 	}
 
+
 	/**
-	 * ¸ù¾İ´«ÈëµÄÈÕÆÚÊ±¼ä×Ö·û´®ºÍformat»ñÈ¡Date
 	 * 
 	 * @param str
 	 * @param format

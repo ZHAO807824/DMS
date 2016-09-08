@@ -7,7 +7,7 @@ import java.util.Properties;
 import com.dms.config.Constant;
 
 /**
- * ¶ÁÈ¡ÅäÖÃÎÄ¼ş²ÎÊı
+ * é…ç½®æ–‡ä»¶å·¥å…·ç±»
  * 
  * @author zhao
  *
@@ -15,7 +15,7 @@ import com.dms.config.Constant;
 public class PropertiesUtil {
 
 	/**
-	 * ÔÚÏµÍ³²ÎÊıÎÄ¼şÖĞÍ¨¹ıkey»ñÈ¡value
+	 * é€šè¿‡keyåœ¨é…ç½®æ–‡ä»¶ä¸­è·å–å…¶value
 	 * 
 	 * @param key
 	 * @return

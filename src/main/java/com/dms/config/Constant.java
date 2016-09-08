@@ -1,7 +1,7 @@
 package com.dms.config;
 
 /**
- * 系统常量
+ * 绯荤粺甯搁噺
  * 
  * @author zhao
  *
@@ -9,13 +9,13 @@ package com.dms.config;
 @SuppressWarnings("all")
 public class Constant {
 	/**
-	 * 系统参数管理
+	 * 绯荤粺鍙傛暟
 	 */
-	public static final String DMS_PROPERTIES="dms.properties";
-	public static final String STYLE_DMS="dms.admin.style";
-	
+	public static final String DMS_PROPERTIES = "dms.properties";
+	public static final String STYLE_DMS = "dms.admin.style";
+
 	/**
-	 * 缓存
+	 * 缂撳瓨
 	 */
-	public static final String STUDENT_CACHE="student";
+	public static final String STUDENT_CACHE = "student";
 }
