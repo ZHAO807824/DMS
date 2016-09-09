@@ -15,4 +15,6 @@ public interface IAdminDao {
 	 * 查询
 	 */
 	public Admin findOne(@Param(value = "email") String email,@Param(value = "password") String password);
+
+	public String findEmailById(@Param(value="id") Integer id);
 }

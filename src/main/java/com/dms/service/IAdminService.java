@@ -16,4 +16,11 @@ public interface IAdminService {
 	 * @return
 	 */
 	public Admin login(String email,String password);
+	
+	/**
+	 * 校验在线状态
+	 * @param value
+	 * @return
+	 */
+	public boolean check(String value);
 }

@@ -5,5 +5,9 @@
 	<select id="findOne" resultType="Admin">
 		select * from admin where email=#{email} and password=#{password}
 	</select>
+	
+		<select id="findEmailById">
+		select email from admin where id=#{id}
+	</select>
 
 </mapper>

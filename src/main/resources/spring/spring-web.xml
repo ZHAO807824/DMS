@@ -29,4 +29,21 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<!-- 5:SpringMVC拦截器 -->
+	    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*" />
+            <bean class="com.dms.interceptor.AdminInterceptor">
+                <property name="urls">
+                    <list>
+                        <value>/index.action</value>
+                        <value>/login.action</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+	
+	
 </beans>
