@@ -76,18 +76,24 @@ public class AdminService implements IAdminService {
 		return false;
 	}
 
+	/**
+	 * 使用Spring的注解事务,要么不用try catch 要么就在catch中抛出异常,否则在catch后不会进行事务回滚
+	 * @throws Exception 
+	 */
 	@Transactional
-	public boolean register(Admin admin, User user) {
+	public boolean register(Admin admin, User user) throws Exception {
 		try {
 			Integer adminId = adminDao.insertAdmin(admin);
 			Integer userId = userDao.insertUser(user);
-			if (adminId != null && userId != null)
+			if (adminId != null && userId != null){
 				userDao.insertUserAdmin(userId, adminId);
+				return true;
+			}
 		} catch (Exception e) {
 			LOGGER.info("AdminService register(Admin,User)," + e.getMessage());
-			return false;
+			throw new Exception(e.getMessage());
 		}
-		return true;
+		return false;
 	}
 
 }

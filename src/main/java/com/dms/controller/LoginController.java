@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.dms.config.Constant;
+import com.dms.dto.Result;
 import com.dms.entity.Admin;
 import com.dms.kit.AdminKit;
 import com.dms.service.IAdminService;
@@ -39,7 +40,6 @@ public class LoginController {
 
 	@Autowired
 	private IAdminService adminService;
-
 
 	/**
 	 * 初始登录页面
@@ -68,6 +68,7 @@ public class LoginController {
 				response.addCookie(auth);
 				// Admin
 				new AdminKit(admin);
+				
 				return PropertiesUtil.getValue(Constant.STYLE_DMS) + "/home";
 			}
 		}
@@ -90,11 +91,13 @@ public class LoginController {
 	 * @param email
 	 * @return
 	 */
-	@RequestMapping(value = "/register", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/register", method = RequestMethod.GET, produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public boolean register(@RequestParam(value = "registerEmail", required = true) String email) {
-		System.out.println("Email:" + email);
-		return adminService.checkEmail(email);
+	public Result<String> register(@RequestParam(value = "registerEmail", required = true) String email) {
+		boolean result = adminService.checkEmail(email);
+		if (result)
+			return new Result<String>(result);
+		return new Result<String>(result, "注册账号已存在。");
 	}
 
 	/**
@@ -109,7 +112,7 @@ public class LoginController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(String registerFullname, String registerUsername, String registerEmail,
 			String registerPassword) {
-		
+
 		return null;
 	}
 }

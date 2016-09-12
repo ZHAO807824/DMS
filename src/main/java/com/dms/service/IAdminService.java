@@ -38,5 +38,5 @@ public interface IAdminService {
 	 * @param user
 	 * @return
 	 */
-	public boolean register(Admin admin,User user);
+	public boolean register(Admin admin,User user) throws Exception;
 }

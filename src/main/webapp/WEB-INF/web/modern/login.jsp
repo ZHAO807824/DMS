@@ -64,5 +64,11 @@
 			<a href="https://github.com/ZHAO807824" target="_blank" title="ZHAO807824">ZHAO807824</a>
 		</p>
 	</div>
+	
+	<script type="text/javascript">
+		$(function(){
+			DmsLogin.Login.init();
+		});
+	</script>
 </body>
 </html>
