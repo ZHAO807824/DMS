@@ -13,13 +13,40 @@
 	<!-- 1: 扫描包和子包 -->
 	<context:component-scan base-package="com.dms.controller" />
 
-	<!-- 2: 不处理静态资源 -->
-	<mvc:default-servlet-handler />
-
-	<!-- 3: 如果你使用注释后您必须配置设置 -->
+	<!-- 2: 如果你使用注释后您必须配置设置 -->
 	<mvc:annotation-driven />
 
-	<!-- 4: 配置视图定位器 -->
+	<!-- 3: 处理静态资源 -->
+	<mvc:resources mapping="/basic/**" location="/basic/" />
+    <mvc:resources mapping="/cloud/**" location="/cloud/" />
+    <mvc:resources mapping="/common/**" location="/common/" />
+    <mvc:resources mapping="/modern/**" location="/modern/" />
+    <mvc:resources mapping="/" location="/index.jsp" />
+
+	<!-- 4:配置ViewResolver。 可以用多个ViewResolver。 使用order属性排序。 InternalResourceViewResolver放在最后。 -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+				<entry key="htm" value="text/html" />
+			</map>
+		</property>
+
+		<property name="defaultViews">
+			<list>
+				<!-- JSON View -->
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+				</bean>
+			</list>
+		</property>
+		<property name="ignoreAcceptHeader" value="true" />
+	</bean>
+
+	<!-- 5: 配置视图定位器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		id="internalResourceViewResolver">
@@ -29,21 +56,20 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- 5:SpringMVC拦截器 -->
-	    <!-- 拦截器 -->
+	<!-- 6:SpringMVC拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/*" />
             <bean class="com.dms.interceptor.AdminInterceptor">
                 <property name="urls">
                     <list>
-                        <value>/index.action</value>
-                        <value>/login.action</value>
+                        <value>/index</value>
+                        <value>/login</value>
+                        <value>/register</value>
                     </list>
                 </property>
             </bean>
         </mvc:interceptor>
     </mvc:interceptors>
-	
-	
+    
 </beans>

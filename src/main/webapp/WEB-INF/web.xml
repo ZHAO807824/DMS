@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0" metadata-complete="true">
-	
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
@@ -20,14 +20,40 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DMS</servlet-name>
-		<url-pattern>*.action</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Spring -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
+	<!-- DWR -->
+	<servlet>
+		<servlet-name>dwr</servlet-name>
+		<!--DWR 2.x -->
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>classes</param-name>
+			<param-value>java.lang.Object</param-value>
+		</init-param>
+		<!-- 设置是否允许使用dwr推送技术 -->
+		<init-param>
+			<param-name>activeReverseAjaxEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dwr</servlet-name>
+		<url-pattern>/message/*</url-pattern>
+	</servlet-mapping>
+
 	<!-- 添加日志监听器 -->
 	<context-param>
 		<param-name>logbackConfigLocation</param-name>
@@ -37,7 +63,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/spring-db.xml,classpath:spring/spring-cache.xml</param-value>
 	</context-param>
-	
+
 	<!-- post乱码处理 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
@@ -51,5 +77,5 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 </web-app>

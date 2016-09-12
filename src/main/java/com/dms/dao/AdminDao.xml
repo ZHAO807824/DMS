@@ -6,8 +6,16 @@
 		select * from admin where email=#{email} and password=#{password}
 	</select>
 	
-		<select id="findEmailById">
+	<select id="findEmailById">
 		select email from admin where id=#{id}
 	</select>
+	
+	<select id="findIdByEmail">
+		select id from admin where email=#{email}
+	</select>
+	
+	<insert id="insertAdmin" keyProperty="Id" parameterType="Admin">
+		insert into admin() values(email,password) values(#{email},#{password})
+	</insert>
 
 </mapper>

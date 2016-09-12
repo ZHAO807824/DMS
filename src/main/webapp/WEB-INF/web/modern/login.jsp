@@ -10,6 +10,8 @@
 <script type="application/x-javascript">
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
+
+<link rel="shortcut icon" type="image/x-icon" href="${ctx}/common/images/favicon.ico" />
 <!-- Bootstrap Core CSS -->
 <link href="${ctx}/modern/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
@@ -19,9 +21,7 @@
 <script src="${ctx}/modern/js/jquery.min.js"></script>
 <script src="${ctx}/modern/js/jquery.validate.min.js"></script>
 <!----webfonts--->
-<link
-	href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900'
-	rel='stylesheet' type='text/css'>
+<link href="${ctx}/modern/css/fonts_useso.css" rel='stylesheet' type='text/css' />
 <!---//webfonts--->
 <!-- Bootstrap Core JavaScript -->
 <script src="${ctx}/modern/js/bootstrap.min.js"></script>
@@ -35,7 +35,7 @@
 	</div>
 	<h2 class="form-heading">login</h2>
 	<div class="app-cam">
-		<form id="form" name="form" action="login.action" method="post">
+		<form id="form" name="form" action="login" method="post">
 			<input type="text" class="text" id="email" name="email" value="E-mail address"
 				onfocus="this.value = '';"
 				onblur="if (this.value == '') {this.value = 'E-mail address';}">

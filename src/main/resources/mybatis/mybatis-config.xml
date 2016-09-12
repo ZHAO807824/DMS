@@ -8,7 +8,7 @@
 	</settings>
 	
 	<typeAliases>
-		<package name="com.dms.entity"/>
+		<typeAlias type="com.dms.entity.Admin" alias="Admin"/>
 	</typeAliases>
 
 	<mappers>

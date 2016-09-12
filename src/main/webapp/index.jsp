@@ -7,6 +7,6 @@
 <title>DMS</title>
 </head>
 <body>	
-	<% request.getRequestDispatcher("index.action").forward(request,response) ; %>
+	<% request.getRequestDispatcher("index").forward(request,response) ; %>
 </body>
 </html>

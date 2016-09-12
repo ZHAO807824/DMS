@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>DMS</title>
+<link rel="shortcut icon" type="image/x-icon" href="${ctx}/common/images/favicon.ico" />
 <link href="${ctx}/basic/css/style.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" src="${ctx}/basic/js/jquery.js"></script>
 <script src="${ctx}/basic/js/cloud.js" type="text/javascript"></script>

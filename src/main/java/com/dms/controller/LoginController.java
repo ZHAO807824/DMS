@@ -4,19 +4,24 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.dms.config.Constant;
 import com.dms.entity.Admin;
 import com.dms.kit.AdminKit;
 import com.dms.service.IAdminService;
-import com.dms.service.user.IStudentService;
 import com.dms.util.AuthUtil;
 import com.dms.util.PropertiesUtil;
 import com.dms.util.ValidatorUtil;
@@ -35,15 +40,13 @@ public class LoginController {
 	@Autowired
 	private IAdminService adminService;
 
-	@Autowired
-	private IStudentService studentService;
 
 	/**
 	 * 初始登录页面
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/index.action")
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
 		return PropertiesUtil.getValue(Constant.STYLE_DMS) + "/login";
 	}
@@ -55,7 +58,7 @@ public class LoginController {
 	 * @param password
 	 * @return
 	 */
-	@RequestMapping(value = "/login.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(String email, String password, HttpServletResponse response) {
 		if (ValidatorUtil.isEmail(email)) {
 			Admin admin = adminService.login(email, password);
@@ -69,5 +72,44 @@ public class LoginController {
 			}
 		}
 		return PropertiesUtil.getValue(Constant.STYLE_DMS) + "/login";
+	}
+
+	/**
+	 * 跳转到注册页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return "register";
+	}
+
+	/**
+	 * 注册前校验email是否存在
+	 * 
+	 * @param email
+	 * @return
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public boolean register(@RequestParam(value = "registerEmail", required = true) String email) {
+		System.out.println("Email:" + email);
+		return adminService.checkEmail(email);
+	}
+
+	/**
+	 * 注册
+	 * 
+	 * @param fullname
+	 * @param username
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(String registerFullname, String registerUsername, String registerEmail,
+			String registerPassword) {
+		
+		return null;
 	}
 }

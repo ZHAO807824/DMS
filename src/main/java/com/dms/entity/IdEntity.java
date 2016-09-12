@@ -1,5 +1,6 @@
 package com.dms.entity;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,9 @@ import java.util.Map;
  * @author zhao
  *
  */
-public abstract class IdEntity {
+public abstract class IdEntity implements Serializable {
+
+	private static final long serialVersionUID = 1940699071518625049L;
 	private Integer id;
 
 	public Integer getId() {

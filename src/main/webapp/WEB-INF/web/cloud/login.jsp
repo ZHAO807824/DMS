@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>DMS</title>
 <!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+	<link rel="shortcut icon" type="image/x-icon" href="${ctx}/common/images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="${ctx}/cloud/css/cloud-admin.css" >
 	
 	<link href="${ctx}/cloud/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -18,7 +19,7 @@
 	<!-- ANIMATE -->
 	<link rel="stylesheet" type="text/css" href="${ctx}/cloud/css/animatecss/animate.min.css" />
 	<!-- FONTS -->
-	<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+	<link href="${ctx}/cloud/css/fonts_useso.css" rel='stylesheet' type='text/css' />
 
 </head>
 <body class="login">	
@@ -100,34 +101,34 @@
 							<div class="login-box">
 								<h2 class="bigintro">Register</h2>
 								<div class="divide-40"></div>
-								<form role="form">
+								<form role="form" id="registerForm" name="registerForm" action="register.action" method="post">
 								  <div class="form-group">
-									<label for="exampleInputName">Full Name</label>
+									<label for="registerFullname">Full Name</label>
 									<i class="fa fa-font"></i>
-									<input type="text" class="form-control" id="exampleInputName" >
+									<input type="text" class="form-control" id="registerFullname" name="registerFullname">
 								  </div>
 								  <div class="form-group">
-									<label for="exampleInputUsername">Username</label>
+									<label for="registerUsername">Username</label>
 									<i class="fa fa-user"></i>
-									<input type="text" class="form-control" id="exampleInputUsername" >
+									<input type="text" class="form-control" id="registerUsername" name="registerUsername" >
 								  </div>
 								  <div class="form-group">
-									<label for="exampleInputEmail1">Email address</label>
+									<label for="registerEmail">Email address</label>
 									<i class="fa fa-envelope"></i>
-									<input type="email" class="form-control" id="exampleInputEmail1" >
+									<input type="email" class="form-control" id="registerEmail" name="registerEmail" >
 								  </div>
 								  <div class="form-group"> 
-									<label for="exampleInputPassword1">Password</label>
+									<label for="registerPassword">Password</label>
 									<i class="fa fa-lock"></i>
-									<input type="password" class="form-control" id="exampleInputPassword1" >
+									<input type="password" class="form-control" id="registerPassword" name="registerPassword" >
 								  </div>
 								  <div class="form-group"> 
-									<label for="exampleInputPassword2">Repeat Password</label>
+									<label for="registerPasswordConfirm">Repeat Password</label>
 									<i class="fa fa-check-square-o"></i>
-									<input type="password" class="form-control" id="exampleInputPassword2" >
+									<input type="password" class="form-control" id="registerPasswordConfirm" name="registerPasswordConfirm" >
 								  </div>
 								  <div>
-									<label class="checkbox"> <input type="checkbox" class="uniform" value=""> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+									<label class="checkbox"> <input type="checkbox" id="registerAggree" name="registerAggree" class="uniform"  value=""> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
 									<button type="submit" class="btn btn-success">Sign Up</button>
 								  </div>
 								</form>
@@ -204,6 +205,10 @@
 	<script type="text/javascript" src="${ctx}/cloud/js/backstretch/jquery.backstretch.min.js"></script>
 	<!-- CUSTOM SCRIPT -->
 	<script src="${ctx}/cloud/js/script.js"></script>
+	
+	<!-- 自定义 -->
+	<script type="text/javascript" src="${ctx}/cloud/custom/login.js"></script>
+	
 	<script>
 		jQuery(document).ready(function() {		
 			App.setPage("login_bg");  //Set current page
@@ -218,7 +223,5 @@
 	</script>
 	<!-- /JAVASCRIPTS -->
 	
-	<!-- 自定义 -->
-	<script src="${ctx}/cloud/custom/login.js"></script>
 </body>
 </html>

@@ -9,9 +9,20 @@ import com.dms.entity.IdEntity;
  *
  */
 public class Admin extends IdEntity {
+
+	private static final long serialVersionUID = 8597235150704558206L;
 	private String email;
 	private String password;
 	private Integer role;
+	private Integer status;
+
+	public Admin() {
+	}
+
+	public Admin(String email, String password) {
+		this.email = email;
+		this.password = password;
+	}
 
 	public String getEmail() {
 		return email;
@@ -37,9 +48,12 @@ public class Admin extends IdEntity {
 		this.role = role;
 	}
 
-	@Override
-	public String toString() {
-		return "Admin [email=" + email + ", password=" + password + ", role=" + role + "]";
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 }
