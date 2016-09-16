@@ -1,9 +1,9 @@
 package com.dms.dao.user;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dms.entity.user.User;
+import com.dms.entity.user.UserAdmin;
 
 /**
  * 
@@ -25,6 +25,6 @@ public interface IUserDao {
 	 * @param userId
 	 * @param adminId
 	 */
-	public void insertUserAdmin(@Param("userId") Integer userId,@Param("adminId") Integer adminId);
+	public Integer insertUserAdmin(UserAdmin userAdmin);
 	
 }

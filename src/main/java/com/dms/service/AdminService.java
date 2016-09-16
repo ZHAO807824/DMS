@@ -11,6 +11,7 @@ import com.dms.dao.IAdminDao;
 import com.dms.dao.user.IUserDao;
 import com.dms.entity.Admin;
 import com.dms.entity.user.User;
+import com.dms.entity.user.UserAdmin;
 import com.dms.util.AuthUtil;
 import com.dms.util.MD5Util;
 import com.dms.util.ValidatorUtil;
@@ -78,22 +79,28 @@ public class AdminService implements IAdminService {
 
 	/**
 	 * 使用Spring的注解事务,要么不用try catch 要么就在catch中抛出异常,否则在catch后不会进行事务回滚
-	 * @throws Exception 
+	 * 
+	 * throws RuntimeException:运行时异常,手动抛出Exception异常事务无效
 	 */
 	@Transactional
-	public boolean register(Admin admin, User user) throws Exception {
+	public boolean register(Admin admin, User user) throws RuntimeException {
 		try {
-			Integer adminId = adminDao.insertAdmin(admin);
-			Integer userId = userDao.insertUser(user);
-			if (adminId != null && userId != null){
-				userDao.insertUserAdmin(userId, adminId);
-				return true;
+			adminDao.insertAdmin(admin);
+			Integer adminId = admin.getId();
+			userDao.insertUser(user);
+			Integer userId = user.getId();
+			if (adminId != null && userId != null) {
+				UserAdmin userAdmin = new UserAdmin(userId, adminId);
+				userDao.insertUserAdmin(userAdmin);
+				if (userAdmin != null) {
+					return true;
+				}
 			}
+			throw new RuntimeException("AdminService register(Admin,User) Error:adminId=null||userId=null");
 		} catch (Exception e) {
 			LOGGER.info("AdminService register(Admin,User)," + e.getMessage());
-			throw new Exception(e.getMessage());
+			throw new RuntimeException(e.getMessage());
 		}
-		return false;
 	}
 
 }

@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dms.dao.user.IUserDao">
 
-	<insert id="insertUser" keyProperty="Id" parameterType="User">
-		insert into user(full_name,house_name,gender) values(#fullName,#houseName,#gender)
+	<insert id="insertUser" parameterType="User"  useGeneratedKeys="true" keyProperty="id">
+		insert into user(full_name,house_name,gender) values(#{fullName},#{houseName},#{gender})
 	</insert>
 	
-	<insert id="insertUserAdmin">
-		insert into user_admin values(#{userId},#{adminId})
+	<insert id="insertUserAdmin" parameterType="UserAdmin"  useGeneratedKeys="true" keyProperty="id">
+		insert into user_admin(user_id,admin_id) values(#{userId},#{adminId})
 	</insert>
 	
 </mapper>

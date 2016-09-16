@@ -21,9 +21,11 @@ import com.alibaba.fastjson.JSON;
 import com.dms.config.Constant;
 import com.dms.dto.Result;
 import com.dms.entity.Admin;
+import com.dms.entity.user.User;
 import com.dms.kit.AdminKit;
 import com.dms.service.IAdminService;
 import com.dms.util.AuthUtil;
+import com.dms.util.MD5Util;
 import com.dms.util.PropertiesUtil;
 import com.dms.util.ValidatorUtil;
 
@@ -68,7 +70,7 @@ public class LoginController {
 				response.addCookie(auth);
 				// Admin
 				new AdminKit(admin);
-				
+
 				return PropertiesUtil.getValue(Constant.STYLE_DMS) + "/home";
 			}
 		}
@@ -82,22 +84,19 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-		return "register";
+		return PropertiesUtil.getValue(Constant.STYLE_DMS) + "/register";
 	}
 
 	/**
 	 * 注册前校验email是否存在
 	 * 
 	 * @param email
-	 * @return
+	 * @return:true 验证通过;false 验证失败
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET, produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public Result<String> register(@RequestParam(value = "registerEmail", required = true) String email) {
-		boolean result = adminService.checkEmail(email);
-		if (result)
-			return new Result<String>(result);
-		return new Result<String>(result, "注册账号已存在。");
+	public boolean register(@RequestParam(value = "email", required = true) String email) {
+		return adminService.checkEmail(email) == true ? false : true;
 	}
 
 	/**
@@ -110,9 +109,15 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(String registerFullname, String registerUsername, String registerEmail,
-			String registerPassword) {
-
-		return null;
+	@ResponseBody
+	public boolean register(String fullName, String houseName, String gender, String email, String password) {
+		User user = new User(fullName, houseName, gender);
+		Admin admin = new Admin(email, MD5Util.getMD5(password));
+		try {
+			return adminService.register(admin, user);
+		} catch (Exception e) {
+			LOGGER.info("LoginController register(String,String,String,String,String):" + e.getMessage());
+		}
+		return false;
 	}
 }

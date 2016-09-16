@@ -42,7 +42,7 @@
 	</bean>
 	
 	<!-- 6: 开启注解事务 -->
-	<tx:annotation-driven/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 	<!-- 7: mybatis spring -->
 	<bean id="mapper" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

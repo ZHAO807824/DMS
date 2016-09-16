@@ -20,7 +20,7 @@ public class User extends IdEntity {
 	public User(String fullName, String houseName, String gender) {
 		this.fullName = fullName;
 		this.houseName = houseName;
-		setGender(gender);
+		this.gender=gender;
 	}
 
 	public String getFullName() {
@@ -40,19 +40,11 @@ public class User extends IdEntity {
 	}
 
 	public String getGender() {
-		if (gender.equals(1))
-			return "女";
-		if (gender.equals(0))
-			return "男";
 		return gender;
 	}
 
 	public void setGender(String gender) {
 		this.gender = gender;
-		if (gender.equals("男"))
-			this.gender = "0";
-		if (gender.equals("女"))
-			this.gender = "1";
 	}
 
 	@Override

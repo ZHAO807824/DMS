@@ -32,11 +32,13 @@ public interface IAdminService {
 	 */
 	public boolean checkEmail(String email);
 	
+
 	/**
 	 * 注册
 	 * @param admin
 	 * @param user
 	 * @return
+	 * @throws RuntimeException
 	 */
-	public boolean register(Admin admin,User user) throws Exception;
+	public boolean register(Admin admin,User user) throws RuntimeException;
 }

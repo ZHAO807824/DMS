@@ -9,9 +9,11 @@
 	
 	<typeAliases>
 		<typeAlias type="com.dms.entity.Admin" alias="Admin"/>
+		<package name="com.dms.entity.user"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="com/dms/dao/AdminDao.xml"/>
+		<mapper resource="com/dms/dao/user/UserDao.xml"/>
 	</mappers>
 </configuration>
